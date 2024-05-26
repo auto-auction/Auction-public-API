@@ -1,8 +1,11 @@
 syntax = "proto3";
+
+package ru.auction.api;
+
+option go_package = "autoauction.admin.v1;adminv1";
+
 import "car/car.proto";
 import "auth/auth.proto";
-
-package admin;
 
 service AdminService {
   rpc CreateCar(CarDetails) returns (CarDetails);

@@ -1,8 +1,8 @@
 syntax = "proto3";
 
-package auth;
+package ru.auction.api;
 
-option go_package = "autoauction.auth.v1;ssov1";
+option go_package = "autoauction.auth.v1;authv1";
 
 service Auth {
   rpc Register(User) returns (RegisterResponse);

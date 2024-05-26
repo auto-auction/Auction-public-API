@@ -1,6 +1,8 @@
 syntax = "proto3";
 
-package car;
+package ru.auction.api;
+
+option go_package = "autoauction.car.v1;carv1";
 
 service CarService {
   rpc GetRecommendations(RecommendationsRequest) returns (RecommendationsResponse);
