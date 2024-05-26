@@ -1,6 +1,6 @@
 syntax = "proto3";
-import "car.proto";
-import "auth.proto";
+import "car/car.proto";
+import "auth/auth.proto";
 
 package admin;
 
