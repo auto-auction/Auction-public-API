@@ -1,0 +1,44 @@
+syntax = "proto3";
+
+package auth;
+
+option go_package = "autoauction.auth.v1;ssov1";
+
+service Auth {
+  rpc Register(User) returns (RegisterResponse);
+  rpc Login(LoginRequest) returns (JWT);
+  rpc RefreshToken(RefreshTokenRequest) returns (RefreshTokenResponse);
+}
+
+message User {
+  string id = 1;
+  string phone = 2;
+  string username = 3;
+  string logo = 4;
+  string city = 5;
+  string is_staff = 6;
+  string is_admin = 7;
+  string pass_hash = 8;
+}
+
+message RegisterResponse {
+  string user_id = 1; // ID зарегистрированного пользователя
+}
+
+message LoginRequest {
+  string number = 1; // Номер телефона для регистрации
+  string password = 2; // Пароль для регистрации
+}
+
+message JWT {
+  string token = 1; // Auth токен пользователя, вошедшего в систему
+  string refresh_token = 2;
+}
+
+message RefreshTokenRequest {
+  string refresh_token = 1;
+}
+
+message RefreshTokenResponse {
+  string token = 1;
+}

@@ -1,0 +1,125 @@
+syntax = "proto3";
+
+package car;
+
+service CarService {
+  rpc GetRecommendations(RecommendationsRequest) returns (RecommendationsResponse);
+  rpc SearchCars(SearchRequest) returns (SearchResponse);
+  rpc PlaceOrder(OrderRequest) returns (OrderResponse);
+  rpc TrackOrder(TrackOrderRequest) returns (TrackOrderResponse);
+  rpc CalculateTax(TaxRequest) returns (TaxResponse);
+}
+
+enum FuelType {
+  GASOLINE = 0;
+  DIESEL = 1;
+  ELECTRIC = 2;
+  HYBRID = 3;
+}
+
+enum TransmissionType {
+  MANUAL = 0;
+  AUTOMATIC = 1;
+}
+
+enum BodyType {
+  Saloon = 0; // седан
+  Hatchback = 1; // хэтчбэк
+  Estate = 3; // универсал
+  Coupe = 4; // купе
+  Convertible = 5; // кабриолет
+  Roadster = 6; // родстер
+  SportUtilityVehicle = 7; // (SUV) внедороник
+  Pickup = 8; // пикап
+  CrossoverUtilityVehicle = 9; // кроссовер
+  Limousine = 10; // лимузин
+  Minivan = 11; // минивэн
+  Van = 12; // фургон
+  Lorry = 13; // грузовик
+}
+
+enum WheelDrive {
+  RWD = 0; // задний привод
+  FWD = 1; // передний привод
+  AWD = 2; // полный привод
+}
+
+message RecommendationsRequest {
+  string brand = 1;
+  string model = 2;
+  string generation = 3;
+  int32 minYear = 4;
+  int32 maxYear = 5;
+  int32 minMileage = 6;
+  int32 maxMileage = 7;
+  float minPrice = 8;
+  float maxPrice = 9;
+  FuelType fuelType = 10;
+  TransmissionType transmissionType = 11;
+  float minEngineSize = 12;
+  float maxEngineSize = 13;
+}
+
+message Car {
+  string brand = 1;
+  string model = 2;
+  float engineSize = 3;
+  TransmissionType transmissionType = 4;
+}
+
+message RecommendationsResponse {
+  repeated Car cars = 1;
+}
+
+message SearchRequest {
+  string messageRequest = 1;
+}
+
+message SearchResponse {
+  repeated Car cars = 1;
+}
+
+message OrderRequest {
+  string userId = 1;
+  string carId = 2;
+  string date = 3;
+}
+
+message OrderResponse {
+  string orderId = 1;
+}
+
+message TrackOrderRequest {
+  string order_id = 1;
+}
+
+message TrackOrderResponse {
+  Order order = 1;
+}
+
+message TaxRequest {
+  double price = 1;
+}
+
+message TaxResponse {
+  double taxAmount = 1;
+}
+
+message CarDetails {
+  string carId = 1;
+  string model = 2;
+  string price = 3;
+  string engine = 4;
+  string power = 5;
+  TransmissionType transmissionType = 6;
+  WheelDrive wheelDrive = 7;
+  BodyType bodyType = 8;
+  string color = 9;
+  string mileage = 10;
+  string steeringWheel = 11;
+}
+
+message Order {
+  string order_id = 1;
+  string status = 2;
+}

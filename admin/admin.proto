@@ -1,0 +1,41 @@
+syntax = "proto3";
+import "car.proto";
+import "auth.proto";
+
+package admin;
+
+service AdminService {
+  rpc CreateCar(CarDetails) returns (CarDetails);
+  rpc GetCar(GetCarRequest) returns (CarDetails);
+  rpc UpdateCar(CarDetails) returns (CarDetails);
+  rpc DeleteCar(DeleteCarRequest) returns (DeleteCarResponse);
+
+  rpc CreateUser(User) returns (User);
+  rpc GetUser(GetUserRequest) returns (User);
+  rpc UpdateUser(User) returns (User);
+  rpc DeleteUser(DeleteUserRequest) returns (DeleteUserResponse);
+}
+
+message GetCarRequest {
+  string id = 1;
+}
+
+message DeleteCarRequest {
+  string id = 1;
+}
+
+message DeleteCarResponse {
+  bool success = 1;
+}
+
+message GetUserRequest {
+  string id = 1;
+}
+
+message DeleteUserRequest {
+  string id = 1;
+}
+
+message DeleteUserResponse {
+  bool success = 1;
+}
