@@ -16,8 +16,8 @@ message User {
   string username = 3;
   string logo = 4;
   string city = 5;
-  string is_staff = 6;
-  string is_admin = 7;
+  bool is_staff = 6;
+  bool is_admin = 7;
   string pass_hash = 8;
 }
 
